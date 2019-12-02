@@ -17,7 +17,7 @@ use Yii;
  * @property string $updated_at
  * @property string $deleted_at
  *
- * @property Posts[] $posts
+ * @property Post[] $posts
  */
 class Users extends \yii\db\ActiveRecord
 {
@@ -66,6 +66,6 @@ class Users extends \yii\db\ActiveRecord
      */
     public function getPosts()
     {
-        return $this->hasMany(Posts::className(), ['user_id' => 'id']);
+        return $this->hasMany(Post::className(), ['user_id' => 'id']);
     }
 }

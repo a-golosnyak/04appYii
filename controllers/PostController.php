@@ -4,17 +4,20 @@ namespace app\controllers;
 
 use Throwable;
 use Yii;
-use app\models\Posts;
+use app\models\Post;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PostsController implements the CRUD actions for Posts model.
+ * PostController implements the CRUD actions for Post model.
  */
-class PostsController extends Controller
+class PostController extends Controller
 {
+
+     public $modelClass = 'app\models\Post';
+
     /**
      * {@inheritdoc}
      */
@@ -25,19 +28,23 @@ class PostsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'index' => ['GET', 'POST', 'HEAD'],
+                    'view' => ['GET', 'HEAD'],
+                    'create' => ['POST'],
+                    'update' => ['PUT', 'PATCH']
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all Posts models.
+     * Lists all Post models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Posts::find(),
+            'query' => Post::find(),
         ]);
 
         return $this->render('index', [
@@ -46,7 +53,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Displays a single Posts model.
+     * Displays a single Post model.
      * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +66,13 @@ class PostsController extends Controller
     }
 
     /**
-     * Creates a new Posts model.
+     * Creates a new Post model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Posts();
+        $model = new Post();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +84,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Updates an existing Posts model.
+     * Updates an existing Post model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -97,7 +104,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Deletes an existing Posts model.
+     * Deletes an existing Post model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -113,15 +120,15 @@ class PostsController extends Controller
     }
 
     /**
-     * Finds the Posts model based on its primary key value.
+     * Finds the Post model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Posts the loaded model
+     * @return Post the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Posts::findOne($id)) !== null) {
+        if (($model = Post::findOne($id)) !== null) {
             return $model;
         }
 

@@ -17,7 +17,7 @@ use Yii;
  *
  * @property Users $user
  */
-class Posts extends \yii\db\ActiveRecord
+class Post extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
