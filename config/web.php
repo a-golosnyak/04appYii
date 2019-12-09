@@ -51,9 +51,19 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'post'],
+                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => '/controllers/post',
+                     'prefix' => 'api',
+                ],
             ],
         ],
+    ],
+    'modules' => [
+        'post' => [
+            'class' => '\app\models\Post::class'
+        ]
     ],
     'params' => $params,
 ];

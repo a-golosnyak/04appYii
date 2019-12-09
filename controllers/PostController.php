@@ -21,6 +21,15 @@ class PostController extends Controller
     /**
      * {@inheritdoc}
      */
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+
+        return $behaviors;
+    }
+
+    /*
     public function behaviors()
     {
         return [
@@ -35,7 +44,7 @@ class PostController extends Controller
                 ],
             ],
         ];
-    }
+    }*/
 
     /**
      * Lists all Post models.
@@ -43,6 +52,8 @@ class PostController extends Controller
      */
     public function actionIndex()
     {
+        return  'Here';
+
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find(),
         ]);

@@ -2037,7 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.isLoggedIn = document.querySelector('meta[name="login-status"]').content;
     console.log('Logged in: ' + this.isLoggedIn);
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/web/index.php/post').then(function (_ref) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/posts').then(function (_ref) {
       var data = _ref.data;
       _this.posts = data;
     })["catch"](function (_ref2) {

@@ -46,7 +46,7 @@ export default {
         console.log('Logged in: ' + this.isLoggedIn );
 
         axios
-        .get('/web/index.php/post')
+        .get('/api/posts')
         .then(({data}) => {
             this.posts = data;
         })
